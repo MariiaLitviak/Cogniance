@@ -19,10 +19,9 @@ class TestServer(unittest.TestCase):
     def test_add_new_candidate(self):
         load = {'name': 'Masha', 'position': 'QA intern'}
         json_params = json.dumps(load)
-        headers = {'content-test_gives_listtype': 'application/json'}
+        headers = {'content-type': 'application/json'}
         r = requests.post('http://qainterview.cogniance.com/candidates', data=json_params, headers=headers)
         code = r.status_code
-        #obj = json.loads(r.text)
         self.assertEqual(code, 201)
         size = len(['id'])
         self.assertTrue(size == 1)
