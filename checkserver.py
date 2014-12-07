@@ -23,8 +23,7 @@ class TestServer(unittest.TestCase):
         r = requests.post('http://qainterview.cogniance.com/candidates', data=json_params, headers=headers)
         code = r.status_code
         self.assertEqual(code, 201)
-        size = len(['id'])
-        self.assertTrue(size == 1)
+
 
     # Check negative verifications.
     def test_incorrect_add_data(self):
@@ -76,9 +75,9 @@ class TestServer(unittest.TestCase):
         new_candidate = obj['candidate']
         new_candidate_id = new_candidate['id']
         url = ('http://qainterview.cogniance.com/candidates/'+str(new_candidate_id))
-        k = requests.delete(url, data=json.dumps(load), headers=headers)
+        k = requests.delete(url)
         code = k.status_code
         self.assertEqual(code, 200)
 
-if __name__ == '__main__':
-    unittest.main()
+
+unittest.main()
